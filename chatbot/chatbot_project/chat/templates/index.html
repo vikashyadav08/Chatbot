@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chatbot</title>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        .chat-box { width: 400px; margin: 0 auto; }
+        .user-msg, .bot-msg { padding: 10px; margin: 5px 0; border-radius: 5px; }
+        .user-msg { background-color: #dcf8c6; text-align: right; }
+        .bot-msg { background-color: #f1f0f0; text-align: left; }
+    </style>
+</head>
+<body>
+    <div class="chat-box">
+        <h2>May I Help You Sir?</h2>
+        {% if user_input %}
+            <div class="user-msg">{{ user_input }}</div>
+            <div class="bot-msg">{{ response }}</div>
+        {% endif %}
+        <form method="POST">
+            {% csrf_token %}
+            <input type="text" name="message" required style="width: 80%;">
+            <input type="submit" value="Send">
+        </form>
+    </div>
+</body>
+</html>
